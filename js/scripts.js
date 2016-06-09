@@ -6,10 +6,10 @@ $(document).ready(function() {
     var outputString = "";
     var message = $("#message").val();
     //this place for taking away spaces and punctuation
-    var squareVal = Math.floor(Math.sqrt(message.length)) + 1;
-    if ( Math.sqrt(message.length) % 1 === 0 ) {
-      squareVal -= 1;
-    }
+    var squareVal = Math.floor(Math.sqrt(message.length));
+    // if ( Math.sqrt(message.length) % 1 === 0 ) {
+    //   squareVal -= 1;
+    // } not sure if this is necessary, will test
     for (i = 0; i <= squareVal; ++i) {
       squareColumns[i] = [];
     }
@@ -24,13 +24,19 @@ $(document).ready(function() {
         jumbledArray.push(column[i]);
       });
     }
-    var j = 1;
+    var j = 0;
     while (jumbledArray.length !== 0) {
-      outputString += jumbledArray.shift();
-      if ( j % 6 === 0 ) {
-        outputString += " ";
+      if ( jumbledArray[0] === "" ) {
+        jumbledArray.shift();
+        j -= 1;
+      } else {
+        outputString += jumbledArray.shift();
       }
       j += 1;
+      if ( j % 5 === 0 ) {
+        outputString += " ";
+        j = 0;
+      }
     }
     $("#output").text(outputString);
     event.preventDefault();

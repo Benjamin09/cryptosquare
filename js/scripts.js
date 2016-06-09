@@ -27,13 +27,13 @@ $(document).ready(function() {
         jumbledArray.push(column[i]);
       });
     }
+    var j = 1;
     while (jumbledArray.length !== 0) {
-      var j = 1;
       outputString += jumbledArray.shift();
       if ( j % 6 === 0 ) {
         outputString += " ";
       }
-      j++;
+      j += 1;
     }
     $("#output").text(outputString);
     event.preventDefault();

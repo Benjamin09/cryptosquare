@@ -1,12 +1,9 @@
-var squareColumns = [];
-var i;
-var jumbledArray = [];
-var outputString = "";
-//for testing
-
 $(document).ready(function() {
   $("#crypto").submit(function(event) {
-    squareColumns = [];
+    var squareColumns = [];
+    var i;
+    var jumbledArray = [];
+    var outputString = "";
     var message = $("#message").val();
     //this place for taking away spaces and punctuation
     var squareVal = Math.floor(Math.sqrt(message.length)) + 1;

@@ -1,5 +1,7 @@
 var squareColumns = [];
 var i;
+var jumbledArray = [];
+var outputString = "";
 //for testing
 
 $(document).ready(function() {
@@ -20,6 +22,20 @@ $(document).ready(function() {
         message = message.substr(1);
       }
     });
+    for (i = 0; i < squareVal; ++i) {
+      squareColumns.forEach(function(column) {
+        jumbledArray.push(column[i]);
+      });
+    }
+    while (jumbledArray.length !== 0) {
+      var j = 1;
+      outputString += jumbledArray.shift();
+      if ( j % 6 === 0 ) {
+        outputString += " ";
+      }
+      j++;
+    }
+    $("#output").text(outputString);
     event.preventDefault();
   });
 });
